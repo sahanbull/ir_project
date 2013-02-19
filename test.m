@@ -6,6 +6,7 @@ function [outputs] = test(arg)
 	test4 = a;
 	test5 = 5;
 	test6 = 4;
+	test7 = 5;
 end
 
 
