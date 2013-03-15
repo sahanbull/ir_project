@@ -1,0 +1,10 @@
+Sahan's to do list
+==================
+
+- Have to design the evaluation code in a package like structure
+- it has to has to have a package structure like to panda
+- have to implement basic evaluation metrics 
+	- Average Precision
+	- Mean Average Precision
+- have to check how to store the classifiation of each image in the list
+- implement a method to load the source image....
