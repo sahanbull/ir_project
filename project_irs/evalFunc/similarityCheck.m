@@ -1,10 +1,14 @@
 %% similarityCheck: This function checks how similar a query image and a sent in image is
 function [ranks] = similarityCheck(sim,query,comparers,noRanks)
-	% to store the scores
-	scores = zeros(length(comparers),1);
 	
+	% length of relevant documents
+	numComparers = size(comparers,1);
+
+	% to store the scores
+	scores = zeros(numComparers,1);
+
 	% foreach comparing candidate
-	for (i=1:length(comparers))
+	for (i=1:numComparers)
 	
 		if (sim == 1)
 			scores(i,1) = simEuclidean(query,comparers(i,:));
@@ -13,12 +17,13 @@ function [ranks] = similarityCheck(sim,query,comparers,noRanks)
 		else
 			fprintf('somthing is needed here');	
 		end
+	end
 
-		% sort the scores descending to get the positions
-		[ranks scores] = sort(scores,'descend');
+	% sort the scores descending to get the positions
+	[scores ranks] = sort(scores);
 
-		% pick top noRanks no. of ranks
-		ranks = ranks(1:noRanks,1);
+	% pick top noRanks no. of ranks
+	ranks = ranks(1:noRanks,1);
 end
 
 
