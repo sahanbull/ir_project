@@ -4,7 +4,7 @@ function [docList] = findDocSet(features)
 	load('testDummyData.mat');
 
 	% start with first feature doc list 
-	docList = IDF{1,features(1,1)}
+	docList = IDF{1,features(1,1)};
 	
 	% foreach following feature in the current query
 	for(i=2:length(features))

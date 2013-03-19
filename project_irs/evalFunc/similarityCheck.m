@@ -20,8 +20,9 @@ function [ranks] = similarityCheck(sim,query,comparers,noRanks)
 	end
 
 	% sort the scores descending to get the positions
-	[scores ranks] = sort(scores);
-
+	[scores ranks] = sort(scores,'descend');
+	% scores
+	% ranks
 	% pick top noRanks no. of ranks
 	ranks = ranks(1:noRanks,1);
 end
