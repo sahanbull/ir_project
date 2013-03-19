@@ -14,11 +14,11 @@ Sahan's to do list
 	- similarity in vector space model									: DONE
 	- TF IDF model														: DONE
 	- Improved TF IDF model (Weighted)	ntn.ntn							: DONE
-- Build Evaluation Matrices												: 
-	- bring the classes of the relevant documents 						: 
-	- bring the class of the query										:
-	- Average Precision													: 
-	- Mean Average Precision											:	
+- Build Evaluation Matrices												: DONE
+	- bring the classes of the relevant documents 						: DONE
+	- bring the class of the query										: DONE
+	- Average Precision													: DONE
+	- Mean Average Precision											: DONE	
 - Load the data															: 
 	- load indexed data													:
 	- load feature data													:
