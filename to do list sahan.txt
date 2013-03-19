@@ -10,9 +10,11 @@ Sahan's to do list
 	- pick the significant features										: DONE
 	- pick the document set that contains all those features			: DONE
 	- build the top level comparers manipulation function				: DONE
-- have to implement basic evaluation metrics 							: PARTIAL 
+- have to implement basic evaluation metrics 							: DONE
 	- similarity in vector space model									: DONE
-	- TF IDF model														: NEEDS TO REFER NOTES	
+	- TF IDF model														: DONE
+	- Improved TF IDF model (Weighted)	ntn.ntn							: DONE
+- Build Evaluation Matrices												: 
 	- Average Precision													: 
 	- Mean Average Precision											:	
 - Load the data															: 

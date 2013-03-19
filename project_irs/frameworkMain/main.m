@@ -21,7 +21,7 @@ function [results] = main(q)
 	relDocs = fetchDocs(relDocsList);
 
 	% get the ranks back
-	ranks = similarityCheck(1,relQ,relDocs,features,2);
+	ranks = similarityCheck(3,relQ,relDocs,features,2);
 
 	results = relDocs(ranks,:);
 end
