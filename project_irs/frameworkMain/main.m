@@ -20,11 +20,8 @@ function [results] = main(q)
 		% at one point /// you need to bring the classes of rel Docs as well
 	relDocs = fetchDocs(relDocsList);
 
-	% reduces the relevant docs to relevant features 
-	redRelDocs = relDocs(:,features);
-
 	% get the ranks back
-	ranks = similarityCheck(1,relQ,redRelDocs,2);
+	ranks = similarityCheck(1,relQ,relDocs,features,2);
 
 	results = relDocs(ranks,:);
 end
