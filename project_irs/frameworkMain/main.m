@@ -3,7 +3,7 @@
 	% q 		: query
 	% simType	: similarity measuring approach
 	% noRanked	: number of ranked results expected
-function [results] = main(qs,simType,noRanked)
+function main(qs,simType,noRanked)
 
 	load('testDummyData.mat');
 
@@ -45,8 +45,10 @@ function [results] = main(qs,simType,noRanked)
 		MAP = MAP + AP;
 	end
 
-	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f',MAP/size(qs,1))
-	results = 0
+	MAP = meanAveragePrecision(MAP,size(qs,1));	
+
+	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
+	fprintf('\n')
 end
 
 % a dummy function that will be replaced by the real function later
