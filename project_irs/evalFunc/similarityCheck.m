@@ -3,6 +3,9 @@ function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 
 	% reduces the relevant docs to relevant features 
 	comparers = relDocs(:,features);
+
+	% normalize the query visual words
+	query = query./norm(query);
 	
 	% length of relevant documents
 	numComparers = size(comparers,1);
@@ -15,15 +18,20 @@ function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 	end
 	% foreach comparing candidate
 	for (i=1:numComparers)
-	
+
+		comparer = 	comparers(i,:);
+
+		% normalize the comparer document visual words
+		comparer = comparer./norm(comparer);
+
 		if (sim == 1) % Vector Space Model
-			scores(i,1) = simEuclidean(query,comparers(i,:));
+			scores(i,1) = simEuclidean(query,comparer);
 		elseif (sim == 2) % vanilla TFIDF Model
 			% you dont need the query to get TFIDF score
-			scores(i,1) = simTFIDF(comparers(i,:),Idfs);
+			scores(i,1) = simTFIDF(comparer,Idfs);
 		elseif(sim == 3) % enganced TF IDF Model
 			% weight and compare the similarity. So we need query as well
-			scores(i,1) = simEnhTFIDF(query,comparers(i,:),Idfs);
+			scores(i,1) = simEnhTFIDF(query,comparer,Idfs);
 		end
 	end
 
