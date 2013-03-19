@@ -18,7 +18,7 @@ function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 	end
 	% foreach comparing candidate
 	for (i=1:numComparers)
-
+		% one candidate document
 		comparer = 	comparers(i,:);
 
 		% normalize the comparer document visual words
