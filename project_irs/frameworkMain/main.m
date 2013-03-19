@@ -11,6 +11,9 @@ function [results] = main(q,simType,noRanked)
 	% will be replaced by the real function later
 	relQ = testThresh(q,0.3);
 
+	% picks the class of the query
+	qClass = queryClass(1)
+
 	% get what feaures are significant in this queary
 	features = find(relQ);
 
@@ -27,7 +30,9 @@ function [results] = main(q,simType,noRanked)
 	ranks = similarityCheck(simType,relQ,relDocs,features,noRanked)
 
 	rankedDocs = relDocs(ranks,:);
-	rankedclasses = relClasses(ranks,:);
+	rankedClasses = relClasses(ranks,:);
+
+	averagePrecision(qClass,rankedClasses)
 
 	results = 0
 end
