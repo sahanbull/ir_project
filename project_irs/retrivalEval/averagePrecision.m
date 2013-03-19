@@ -1,10 +1,10 @@
 %% averagePrecision: this function calculates the average precsion for the query
 function [AP] = averagePrecision(queryCl,resultsCl)
-	resultsCl
-	queryCl
+	% resultsCl
+	% queryCl
 
 	% pick the locations of the relevant returns
-	relResults = find(resultsCl==queryCl)
+	relResults = find(resultsCl==queryCl);
 
 	AP = 0.0; % initiate Average precision
 	correct = 0; % to store # of correct returns

@@ -12,7 +12,7 @@ function [results] = main(qs,simType,noRanked)
 	% foreach query
 	for(i=1:size(qs,1))
 
-		q = qs(i,:)
+		q = qs(i,:);
 
 		% transform the image to a vector with wanted features only.
 		% will be replaced by the real function later
@@ -41,11 +41,11 @@ function [results] = main(qs,simType,noRanked)
 
 		% compute average precision for the query result
 		AP = averagePrecision(qClass,rankedClasses);
-		fprintf('\n Averege Precision for query %i is %f',i,AP)
+		fprintf('\n Averege Precision for query\t\t %i is \t\t %f',i,AP)
 		MAP = MAP + AP;
 	end
 
-	fprintf('\n Mean Averege Precision of this model is %f',MAP)
+	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f',MAP/size(qs,1))
 	results = 0
 end
 
