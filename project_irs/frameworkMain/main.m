@@ -3,37 +3,49 @@
 	% q 		: query
 	% simType	: similarity measuring approach
 	% noRanked	: number of ranked results expected
-function [results] = main(q,simType,noRanked)
+function [results] = main(qs,simType,noRanked)
 
 	load('testDummyData.mat');
 
-	% transform the image to a vector with wanted features only.
-	% will be replaced by the real function later
-	relQ = testThresh(q,0.3);
+	% to store the mean average precision
+	MAP = 0.0;
+	% foreach query
+	for(i=1:size(qs,1))
 
-	% picks the class of the query
-	qClass = queryClass(1)
+		q = qs(i,:)
 
-	% get what feaures are significant in this queary
-	features = find(relQ);
+		% transform the image to a vector with wanted features only.
+		% will be replaced by the real function later
+		relQ = testThresh(q,0.3);
 
-	% reduces the query to relevant features
-	relQ = relQ(1,features);
+		% picks the class of the query
+		qClass = queryClass(i);
 
-	% picks the document list with all these fueatures 
-	relDocsList = findDocSet(features);
+		% get what feaures are significant in this queary
+		features = find(relQ);
 
-	% picks relevant docs and their respective judged classes 
-	[relDocs,relClasses] = fetchDocs(relDocsList);
+		% reduces the query to relevant features
+		relQ = relQ(1,features);
 
-	% get the ranks back
-	ranks = similarityCheck(simType,relQ,relDocs,features,noRanked)
+		% picks the document list with all these fueatures 
+		relDocsList = findDocSet(features);
 
-	rankedDocs = relDocs(ranks,:);
-	rankedClasses = relClasses(ranks,:);
+		% picks relevant docs and their respective judged classes 
+		[relDocs,relClasses] = fetchDocs(relDocsList);
 
-	averagePrecision(qClass,rankedClasses)
+		% get the ranks back
+		ranks = similarityCheck(simType,relQ,relDocs,features,noRanked);
 
+		rankedDocs = relDocs(ranks,:);
+		rankedClasses = relClasses(ranks,:);
+
+		% compute average precision for the query result
+		AP = averagePrecision(qClass,rankedClasses);
+		fprintf('\n Averege Precision for query %i is %f',i,AP)
+		MAP = MAP + AP;
+	end
+
+	fprintf('\n Mean Averege Precision of this model is %f',MAP)
 	results = 0
 end
 
