@@ -1,5 +1,8 @@
 %% similarityCheck: This function checks how similar a query image and a sent in image is
-function [ranks] = similarityCheck(sim,query,comparers,noRanks)
+function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
+
+	% reduces the relevant docs to relevant features 
+	comparers = relDocs(:,features);
 	
 	% length of relevant documents
 	numComparers = size(comparers,1);
