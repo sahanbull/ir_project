@@ -6,7 +6,7 @@ function [results] = main(q)
 
 	% transform the image to a vector with wanted feacures only.
 	% will be replaced by the real function later
-	relQ = testThresh(q,0.3)
+	relQ = testThresh(q,0.3);
 
 	% get what feaures are significant in this queary
 	features = find(relQ);
@@ -21,7 +21,7 @@ function [results] = main(q)
 	relDocs = fetchDocs(relDocsList);
 
 	% get the ranks back
-	ranks = similarityCheck(3,relQ,relDocs,features,2);
+	ranks = similarityCheck(1,relQ,relDocs,features,2);
 
 	results = relDocs(ranks,:);
 end
