@@ -4,7 +4,7 @@ function query()
 
 	comparers = rand(20,10);
 
-	thr = 0.3;
+	thr = 0.1;
 
 	IDF = cell(1,10);
 
@@ -31,6 +31,12 @@ function query()
 
 	idfs = log10(N./idfs); % compute IDF scores
 
-	save('testDummyData.mat','queryDum','comparers','IDF','thr','idfs');
+
+	test = randint(size(comparers,1)+1,1,[1 3]);
+
+	classQ = test(length(test),1);
+	classCorpus = test(1:length(test)-1,1);
+
+	save('testDummyData.mat','queryDum','comparers','IDF','thr','idfs','classQ','classCorpus');
 
 end
