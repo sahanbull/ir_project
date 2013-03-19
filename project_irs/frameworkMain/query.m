@@ -12,6 +12,25 @@ function query()
 		IDF{1,i} = (find(comparers(:,i)>thr))';
 	end
 
-	save('testDummyData.mat','queryDum','comparers','IDF','thr');
+	% set up IDF values for each visual term
+	l = length(IDF);
+	idfs = zeros(l,1);
+
+	% start with first feature (visual term) in the doc list 
+	docList = IDF{1,1}; % assign to union set
+	idfs(1,1) = length(IDF{1,1}); % count the df
+	
+	% foreach following feature 
+	for(i=2:l)
+		% eleminates duplicate entries and takes union
+		docList = union(docList,IDF{1,i});
+		idfs(i,1) = length(IDF{1,i});
+	end
+
+	N = length(docList); % number of total docs in the collection
+
+	idfs = log10(N./idfs); % compute IDF scores
+
+	save('testDummyData.mat','queryDum','comparers','IDF','thr','idfs');
 
 end
