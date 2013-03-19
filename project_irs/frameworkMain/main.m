@@ -15,8 +15,9 @@ function [results] = main(q)
 	relQ = relQ(1,features);
 
 	% picks the document list with all these fueatures 
-	relDocsList = findDocSet(features)
+	relDocsList = findDocSet(features);
 	% pics relevant docs
+		% at one point /// you need to bring the classes of rel Docs as well
 	relDocs = fetchDocs(relDocsList);
 
 	% reduces the relevant docs to relevant features 

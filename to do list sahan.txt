@@ -12,10 +12,10 @@ Sahan's to do list
 	- build the top level comparers manipulation function				: DONE
 - have to implement basic evaluation metrics 							: PARTIAL 
 	- similarity in vector space model									: DONE
-	- TF IDF model														: 	
+	- TF IDF model														: NEEDS TO REFER NOTES	
 	- Average Precision													: 
 	- Mean Average Precision											:	
-- Load the data															:
+- Load the data															: 
 	- load indexed data													:
 	- load feature data													:
 	- make a IDF index for each feature									:
