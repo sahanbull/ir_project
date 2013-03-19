@@ -9,14 +9,14 @@ function [idfs] = countDF()
 	docList = IDF{1,1}; % assign to union set
 	idfs(1,1) = length(IDF{1,1}); % count the df
 	
-	% foreach following feature in the current query
+	% foreach following feature 
 	for(i=2:l)
 		% eleminates duplicate entries and takes union
 		docList = union(docList,IDF{1,i});
 		idfs(i,1) = length(IDF{1,i});
 	end
 
-	N = length(docList);
+	N = length(docList); % number of total docs in the collection
 
-	idfs = log10(N./idfs);
+	idfs = log10(N./idfs); % compute IDF scores
 end
