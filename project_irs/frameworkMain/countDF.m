@@ -1,14 +1,22 @@
 %% countDF: this function returns the list of document frequency for each word in a feature set
-function [df] = countDF()
+function [idfs] = countDF()
 	load('testDummyData.mat');
 
 	l = length(IDF);
-	df = zeros(l,1);
+	idfs = zeros(l,1);
+
+	% % start with first feature doc list 
+	docList = IDF{1,1}; % assign to union set
+	idfs(1,1) = length(IDF{1,1}); % count the df
 	
 	% foreach following feature in the current query
-	for(i=1:l)
-		% eleminate the docs in the corpus that dont have all of them
-		df(i,1) = length(IDF{1,i});
+	for(i=2:l)
+		% eleminates duplicate entries and takes union
+		docList = union(docList,IDF{1,i});
+		idfs(i,1) = length(IDF{1,i});
 	end
 
+	N = length(docList);
+
+	idfs = log10(N./idfs);
 end
