@@ -57,7 +57,7 @@ function main(qs,simType,noRanked)
 
 		fprintf('\n Completed query\t\t %i',i)
 	end
-
+	save('resultsData.mat','times','labels');
 	% MAP = meanAveragePrecision(APs);	
 
 	% fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
