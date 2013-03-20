@@ -7,11 +7,14 @@ function main(qs,simType,noRanked)
 
 	load('testDummyData.mat');
 
-	% to store the mean average precision
-	MAP = 0.0;
+	% to store the average precision
+	APs = zeros(1,size(qs,1));
+	% to record times
+	times = zeros(1,size(qs,1));
+
 	% foreach query
 	for(i=1:size(qs,1))
-
+		tStart = tic;
 		q = qs(i,:);
 
 		% transform the image to a vector with wanted features only.
@@ -41,14 +44,19 @@ function main(qs,simType,noRanked)
 
 		% compute average precision for the query result
 		AP = averagePrecision(qClass,rankedClasses);
+		tEnd = toc(tStart);
+		APs(1,i) = AP;
+		times(1,i) = tEnd;
+
 		fprintf('\n Averege Precision for query\t\t %i is \t\t %f',i,AP)
-		MAP = MAP + AP;
 	end
 
-	MAP = meanAveragePrecision(MAP,size(qs,1));	
+	MAP = meanAveragePrecision(APs);	
 
 	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
 	fprintf('\n')
+	% APs
+	% times
 end
 
 % a dummy function that will be replaced by the real function later
