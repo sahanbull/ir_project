@@ -17,6 +17,7 @@ Sahan's to do list
 - Build Evaluation Matrices												: DONE
 	- bring the classes of the relevant documents 						: DONE
 	- bring the class of the query										: DONE
+	- store the classifications in one matrix							: DONE
 	- Average Precision													: DONE
 	- Mean Average Precision											: DONE	
 - Load the data															: 

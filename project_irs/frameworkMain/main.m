@@ -12,6 +12,11 @@ function main(qs,simType,noRanked)
 	% to record times
 	times = zeros(1,size(qs,1));
 
+	% to store the labels
+	% rows to store results for each query
+	% coulums to store 
+	labels = zeros(size(qs,1),noRanked+1);
+
 	% foreach query
 	for(i=1:size(qs,1))
 		tStart = tic;
@@ -42,20 +47,23 @@ function main(qs,simType,noRanked)
 		rankedDocs = relDocs(ranks,:);
 		rankedClasses = relClasses(ranks,:);
 
+		labels(i,:) = [qClass rankedClasses'];
+
 		% compute average precision for the query result
-		AP = averagePrecision(qClass,rankedClasses);
+		% AP = averagePrecision(qClass,rankedClasses);
 		tEnd = toc(tStart);
-		APs(1,i) = AP;
+		% APs(1,i) = AP;
 		times(1,i) = tEnd;
 
-		fprintf('\n Averege Precision for query\t\t %i is \t\t %f',i,AP)
+		fprintf('\n Completed query\t\t %i',i)
 	end
 
-	MAP = meanAveragePrecision(APs);	
+	% MAP = meanAveragePrecision(APs);	
 
-	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
+	% fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
 	fprintf('\n')
 	% APs
+	% labels
 	% times
 end
 
