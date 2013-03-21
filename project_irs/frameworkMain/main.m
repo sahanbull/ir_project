@@ -3,9 +3,14 @@
 	% q 		: query
 	% simType	: similarity measuring approach
 	% noRanked	: number of ranked results expected
-function main(qs,simType,noRanked)
+	% thresh 	: the threshold value
+function main(simType,noRanked,thresh)
 
-	load('testDummyData.mat');
+	load('processedHOG.mat');
+
+	% size(corpus)
+	% size(qs)
+
 
 	% to store the average precision
 	APs = zeros(1,size(qs,1));
@@ -15,17 +20,18 @@ function main(qs,simType,noRanked)
 	% to store the labels
 	% rows to store results for each query
 	% coulums to store 
-	labels = zeros(size(qs,1),noRanked+1);
+	labels = ones(size(qs,1),noRanked+1)*10;
+
 
 	% foreach query
-	for(i=1:size(qs,1))
+	for(i=1:200)%size(qs,1))
 		tStart = tic;
 		q = qs(i,:);
-
+	
 		% transform the image to a vector with wanted features only.
 		% will be replaced by the real function later
-		relQ = testThresh(q,0.3);
-
+		relQ = testThresh(q,thresh);
+	
 		% picks the class of the query
 		qClass = queryClass(i);
 
@@ -35,8 +41,40 @@ function main(qs,simType,noRanked)
 		% reduces the query to relevant features
 		relQ = relQ(1,features);
 
+		% if no features were extracted
+		if (size(features,2) == 0)
+
+			labels(i,1) = qClass;
+
+			% compute average precision for the query result
+
+			tEnd = toc(tStart);
+
+			times(1,i) = tEnd;
+
+
+			fprintf('\n No features for query\t\t %i',i);
+			continue;
+		end
+
 		% picks the document list with all these fueatures 
 		relDocsList = findDocSet(features);
+
+		% if no documents are there having an AND match
+		if (size(relDocsList,2) == 0)
+
+			labels(i,1) = qClass;
+
+			% compute average precision for the query result
+			% AP = averagePrecision(qClass,rankedClasses);
+			tEnd = toc(tStart);
+			% APs(1,i) = AP;
+			times(1,i) = tEnd;
+
+
+			fprintf('\n No results for query\t\t %i',i);
+			continue;
+		end
 
 		% picks relevant docs and their respective judged classes 
 		[relDocs,relClasses] = fetchDocs(relDocsList);
@@ -47,13 +85,15 @@ function main(qs,simType,noRanked)
 		rankedDocs = relDocs(ranks,:);
 		rankedClasses = relClasses(ranks,:);
 
-		labels(i,:) = [qClass rankedClasses'];
+		labels(i,1) = qClass;
+		labels(i,2:length(rankedClasses)+1) = rankedClasses(1:length(rankedClasses),1);
 
 		% compute average precision for the query result
 		% AP = averagePrecision(qClass,rankedClasses);
 		tEnd = toc(tStart);
 		% APs(1,i) = AP;
 		times(1,i) = tEnd;
+
 
 		fprintf('\n Completed query\t\t %i',i)
 	end
@@ -65,6 +105,7 @@ function main(qs,simType,noRanked)
 	% APs
 	% labels
 	% times
+
 end
 
 % a dummy function that will be replaced by the real function later
