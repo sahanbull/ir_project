@@ -25,8 +25,9 @@ Sahan's to do list
 	- load feature data													: DONE
 	- make a IDF index for each feature									: DONE
 	- create the data stuctures											: DONE
-- implement a method to load the source image							:
-- implement the whole evaluation process								:
-- Have to design the evaluation code in a package like structure		:
-- it has to have a package structure like to panda						:
-- streamline the whole process											:
+- implement a method to load the source image							: DONE
+- implement options to use full feature set in comparison				: DONE
+- implement the whole evaluation process								: 
+- Have to design the evaluation code in a package like structure		: DONE
+- it has to have a package structure like to panda						: DONE
+- streamline the whole process											: DONE
