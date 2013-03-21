@@ -24,7 +24,7 @@ function main(simType,noRanked,thresh)
 
 
 	% foreach query
-	for(i=1:200)%size(qs,1))
+	for(i=1:size(qs,1))
 		tStart = tic;
 		q = qs(i,:);
 	
@@ -89,18 +89,19 @@ function main(simType,noRanked,thresh)
 		labels(i,2:length(rankedClasses)+1) = rankedClasses(1:length(rankedClasses),1);
 
 		% compute average precision for the query result
-		% AP = averagePrecision(qClass,rankedClasses);
+		AP = averagePrecision(qClass,rankedClasses);
 		tEnd = toc(tStart);
-		% APs(1,i) = AP;
+		APs(1,i) = AP;
 		times(1,i) = tEnd;
 
 
-		fprintf('\n Completed query\t\t %i',i)
+
+		fprintf('\n Completed query\t\t %i with average precision : %f',i,AP)
 	end
 	save('resultsData.mat','times','labels');
-	% MAP = meanAveragePrecision(APs);	
+	 MAP = meanAveragePrecision(APs);	
 
-	% fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
+	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
 	fprintf('\n')
 	% APs
 	% labels
