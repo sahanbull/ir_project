@@ -4,7 +4,7 @@
 	% simType	: similarity measuring approach
 	% noRanked	: number of ranked results expected
 	% thresh 	: the threshold value
-function main(simType,noRanked,thresh)
+function [times,labels] = main(simType,noRanked,thresh)
 
 	load('processedHOG.mat');
 
