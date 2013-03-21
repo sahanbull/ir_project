@@ -29,7 +29,7 @@ function [times,labels] = main(simType,noRanked,thresh)
 		q = qs(i,:);
 	
 		% transform the image to a vector with wanted features only.
-		% will be replaced by the real function later
+		% reduce the dimensions
 		relQ = testThresh(q,thresh);
 	
 		% picks the class of the query
@@ -40,6 +40,11 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 		% reduces the query to relevant features
 		relQ = relQ(1,features);
+
+		% *** uncomment the following line to use full set of features *** 
+		% ALSO REFER TO QUERY REDUCTION IN evalFunc->similarityCheck() function
+		% to adjust document feature space
+		% relQ = q;
 
 		% if no features were extracted
 		if (size(features,2) == 0)
