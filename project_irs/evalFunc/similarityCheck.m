@@ -35,12 +35,18 @@ function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 		end
 	end
 
+	limit = noRanks;
+
+	if(limit>size(scores,1))
+		limit = size(scores,1);
+	end
+
 	% sort the scores descending to get the positions
 	[scores ranks] = sort(scores,'descend');
 	% scores
 	% ranks
 	% pick top noRanks no. of ranks
-	ranks = ranks(1:noRanks,1);
+	ranks = ranks(1:limit,1);
 end
 
 
