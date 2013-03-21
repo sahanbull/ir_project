@@ -20,11 +20,11 @@ Sahan's to do list
 	- store the classifications in one matrix							: DONE
 	- Average Precision													: DONE
 	- Mean Average Precision											: DONE	
-- Load the data															: 
-	- load indexed data													:
-	- load feature data													:
-	- make a IDF index for each feature									:
-	- create the data stuctures											:
+- Load the data															: DONE
+	- load indexed data													: DONE
+	- load feature data													: DONE
+	- make a IDF index for each feature									: DONE
+	- create the data stuctures											: DONE
 - implement a method to load the source image							:
 - implement the whole evaluation process								:
 - Have to design the evaluation code in a package like structure		:
