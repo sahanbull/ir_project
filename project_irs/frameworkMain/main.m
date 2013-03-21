@@ -11,6 +11,8 @@ function [times,labels] = main(simType,noRanked,thresh)
 	% size(corpus)
 	% size(qs)
 
+	% to record successful queries
+	successQs = ones(1,size(qs,1));
 
 	% to store the average precision
 	APs = zeros(1,size(qs,1));
@@ -51,7 +53,8 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 			labels(i,1) = qClass;
 
-			% compute average precision for the query result
+			% mark query as failed
+			successQs(1,i) = 0;
 
 			tEnd = toc(tStart);
 
@@ -70,8 +73,9 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 			labels(i,1) = qClass;
 
-			% compute average precision for the query result
-			% AP = averagePrecision(qClass,rankedClasses);
+			% mark query as failed
+			successQs(1,i) = 0;
+
 			tEnd = toc(tStart);
 			% APs(1,i) = AP;
 			times(1,i) = tEnd;
@@ -103,7 +107,7 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 		fprintf('\n Completed query\t\t %i with average precision : %f',i,AP)
 	end
-	save('resultsData.mat','times','labels');
+	save('resultsData.mat','times','labels','successQs');
 	 MAP = meanAveragePrecision(APs);	
 
 	fprintf('\n\n-- Mean Averege Precision of this model is \t\t %f', MAP)
