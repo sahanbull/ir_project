@@ -11,9 +11,9 @@ function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 	% comparers = relDocs;
 
 
-	% query
+	% query 
 	% comparers
-	% normalize the query visual words
+	% normalize the query visual words earlier hand
 	query = query./norm(query);
 	
 	% length of relevant documents
