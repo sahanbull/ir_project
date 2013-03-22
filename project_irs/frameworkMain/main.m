@@ -1,6 +1,5 @@
 %% main: main function that starts and triggers everything
 % input parameters
-	% q 		: query
 	% simType	: similarity measuring approach
 	% noRanked	: number of ranked results expected
 	% thresh 	: the threshold value
@@ -67,20 +66,25 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 		% picks the document list with all these fueatures 
 		relDocsList = findANDDocSet(features);
+
+		% and AND query doesn't give any results... use OR query
+		% atleast one of the features in the query
 		if (size(relDocsList,2) == 0)
 			relDocsList = findORDocSet(features);
+
+			% mark query as OR Query
+			successQs(1,i) = 2;
 		end
 		
-		% if no documents are there having an AND match
+		% if no documents are there having an AND or OR match
 		if (size(relDocsList,2) == 0)
 
 			labels(i,1) = qClass;
-
 			% mark query as failed
 			successQs(1,i) = 0;
 
 			tEnd = toc(tStart);
-			% APs(1,i) = AP;
+
 			times(1,i) = tEnd;
 
 
