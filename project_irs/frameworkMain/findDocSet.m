@@ -1,7 +1,7 @@
 %% findDocSet: finds the document set that has all the feaures asked for
-function [docList] = findDocSet(features)
+function [docList] = findANDDocSet(features)
 	% load the file with corpus:: changed later
-	load('processedHOG.mat');
+	load('processed.mat');
 
 	% start with first feature doc list 
 	docList = InvDocIndex{features(1,1),1};

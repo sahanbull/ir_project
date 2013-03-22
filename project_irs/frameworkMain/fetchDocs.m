@@ -1,7 +1,7 @@
 %% fetchDocs: this function fetches the documents in a matrix 
 function [docs,classes] = fetchDocs(docList)
 	% load the file with corpus:: changed later
-	load('processedHOG.mat');
+	load('processed.mat');
 
 	% pick the ones that are relevant
 	docs = corpus(docList,:);

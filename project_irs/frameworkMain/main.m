@@ -6,7 +6,7 @@
 	% thresh 	: the threshold value
 function [times,labels] = main(simType,noRanked,thresh)
 
-	load('processedHOG.mat');
+	load('processed.mat');
 
 	% size(corpus)
 	% size(qs)
@@ -26,13 +26,13 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 
 	% foreach query
-	for(i=1:size(qs,1))
+	for(i=1:1)%size(qs,1))
 		tStart = tic;
 		q = qs(i,:);
 	
 		% transform the image to a vector with wanted features only.
 		% reduce the dimensions
-		relQ = testThresh(q,thresh);
+		relQ = testThresh(q,thresh)
 	
 		% picks the class of the query
 		qClass = queryClass(i);
