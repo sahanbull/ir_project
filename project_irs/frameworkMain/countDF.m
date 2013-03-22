@@ -1,6 +1,6 @@
 %% countDF: this function returns the list of document frequency for each word in a feature set
 function [idfs] = countDF()
-	load('processedHOG.mat');
+	load('processed.mat');
 
 	l = length(InvDocIndex);
 	idfs = zeros(l,1);
@@ -18,5 +18,5 @@ function [idfs] = countDF()
 
 	N = length(docList) % number of total docs in the collection
 
-	idfs = log10(N./idfs); % compute IDF scores
+	idfs = log10(N./(1+idfs)); % compute IDF scores
 end
