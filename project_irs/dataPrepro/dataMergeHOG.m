@@ -9,5 +9,5 @@ function [corpus,qs] = dataMergeHOG()
 	% make the queries
 	qs = [test]; 
 
-	save('processedHOG.mat','corpus','qs');
+	save('processed.mat','corpus','qs');
 end

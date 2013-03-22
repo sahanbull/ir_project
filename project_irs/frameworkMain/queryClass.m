@@ -2,7 +2,7 @@
 function [qCl] = queryClass(i)
 
 	% loads the data
-	load('processedHOG.mat');
+	load('processed.mat');
 
 	% picks the query label
 	qCl = classQ(i,1);

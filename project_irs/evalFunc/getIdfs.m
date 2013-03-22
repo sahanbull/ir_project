@@ -1,6 +1,6 @@
 %% getIdfs: this function picks the IDF values required for a perticular query
 function [Idfs] = getIdfs(features)
-	load('processedHOG.mat');
+	load('processed.mat');
 
 	% fetch the required IDFs
 	Idfs = idfs(features,1);
@@ -8,5 +8,5 @@ function [Idfs] = getIdfs(features)
 	% *** uncomment the following line to use full set of features ***
 	% ALSO REFER TO QUERY REDUCTION IN evalFunc->similarityCheck() function
 	% to adjust document feature space
-	Idfs = idfs(:,1);
+	% Idfs = idfs(:,1);
 end
