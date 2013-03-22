@@ -26,13 +26,13 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 
 	% foreach query
-	for(i=1:1)%size(qs,1))
+	for(i=1:20)%size(qs,1))
 		tStart = tic;
 		q = qs(i,:);
 	
 		% transform the image to a vector with wanted features only.
 		% reduce the dimensions
-		relQ = testThresh(q,thresh)
+		relQ = testThresh(q,thresh);
 	
 		% picks the class of the query
 		qClass = queryClass(i);
@@ -66,8 +66,11 @@ function [times,labels] = main(simType,noRanked,thresh)
 		end
 
 		% picks the document list with all these fueatures 
-		relDocsList = findDocSet(features);
-
+		relDocsList = findANDDocSet(features);
+		if (size(relDocsList,2) == 0)
+			relDocsList = findORDocSet(features);
+		end
+		
 		% if no documents are there having an AND match
 		if (size(relDocsList,2) == 0)
 
