@@ -31,9 +31,11 @@ Sahan's to do list
 - Have to design the evaluation code in a package like structure		: DONE
 - it has to have a package structure like to panda						: DONE
 - streamline the whole process											: DONE
-Prepare the RGB dataset													: 
-- merge results															:
-- merge invereted index 												:
-- merge idfs															:
-- merge corpus classes													:
-- merge test classes													:
+- do the same for mean threshold										: DONE
+Prepare the RGB dataset													: DONE
+- merge results															: DONE
+- merge invereted index 												: DONE
+- merge idfs															: DONE
+- merge corpus classes													: DONE
+- merge test classes													: DONE
+- do the same for mean threshold										: DONE
