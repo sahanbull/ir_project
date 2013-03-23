@@ -25,7 +25,7 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 
 	% foreach query
-	for(i=1:20)%size(qs,1))
+	for(i=1:size(qs,1))
 		tStart = tic;
 		q = qs(i,:);
 	
@@ -125,7 +125,8 @@ function [times,labels] = main(simType,noRanked,thresh)
 
 end
 
-% a dummy function that will be replaced by the real function later
+% this function replaces the un important features of the query with zeros
+% makes variable reduction very easy and efficient
 function [thrQ] = testThresh(q,thr)
 	valid = find(q>thr);
 	thrQ = zeros(size(q));
