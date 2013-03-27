@@ -20,22 +20,13 @@ Sahan's to do list
 	- store the classifications in one matrix							: DONE
 	- Average Precision													: DONE
 	- Mean Average Precision											: DONE	
-- Load the data															: DONE
-	- load indexed data													: DONE
-	- load feature data													: DONE
-	- make a IDF index for each feature									: DONE
-	- create the data stuctures											: DONE
-- implement a method to load the source image							: DONE
-- implement options to use full feature set in comparison				: DONE
-- implement the whole evaluation process								: DONE 
-- Have to design the evaluation code in a package like structure		: DONE
-- it has to have a package structure like to panda						: DONE
-- streamline the whole process											: DONE
-- do the same for mean threshold										: DONE
-Prepare the RGB dataset													: DONE
-- merge results															: DONE
-- merge invereted index 												: DONE
-- merge idfs															: DONE
-- merge corpus classes													: DONE
-- merge test classes													: DONE
-- do the same for mean threshold										: DONE
+- Load the data															: 
+	- load indexed data													:
+	- load feature data													:
+	- make a IDF index for each feature									:
+	- create the data stuctures											:
+- implement a method to load the source image							:
+- implement the whole evaluation process								:
+- Have to design the evaluation code in a package like structure		:
+- it has to have a package structure like to panda						:
+- streamline the whole process											:
