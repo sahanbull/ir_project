@@ -1,4 +1,4 @@
-function mrrScore = mrr(correctLabelVec, rankMatrix)
+function mrrScoreVec = mrr(correctLabelVec, rankMatrix)
     [nTestImg nRank] = size(rankMatrix);
     mrrScoreVec = zeros(nTestImg,1);
     for i = 1:nTestImg
@@ -9,5 +9,5 @@ function mrrScore = mrr(correctLabelVec, rankMatrix)
            end
        end
     end
-    mrrScore = mean(mrrScoreVec);
+%    mrrScore = mean(mrrScoreVec);
 end
