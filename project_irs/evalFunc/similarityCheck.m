@@ -2,9 +2,18 @@
 function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 
 	% reduces the relevant docs to relevant features 
+	
 	comparers = relDocs(:,features);
 
-	% normalize the query visual words
+	% *** uncomment this line to use the full set of features ***
+	% ALSO REFER TO QUERY REDUCTION IN frameworkMain->main() function
+	% to adjust query feature space
+	% comparers = relDocs;
+
+
+	% query 
+	% comparers
+	% normalize the query visual words earlier hand
 	query = query./norm(query);
 	
 	% length of relevant documents
@@ -35,12 +44,18 @@ function [ranks] = similarityCheck(sim,query,relDocs,features,noRanks)
 		end
 	end
 
+	limit = noRanks;
+
+	if(limit>size(scores,1))
+		limit = size(scores,1);
+	end
+
 	% sort the scores descending to get the positions
 	[scores ranks] = sort(scores,'descend');
 	% scores
 	% ranks
 	% pick top noRanks no. of ranks
-	ranks = ranks(1:noRanks,1);
+	ranks = ranks(1:limit,1);
 end
 
 

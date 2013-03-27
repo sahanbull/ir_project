@@ -1,8 +1,9 @@
 %% queryClass: this class picks the class of the designated query
 function [qCl] = queryClass(i)
 
-	load('testDummyData.mat');
+	% loads the data
+	load('processed.mat');
 
-	% picks the query class
-	qCl = classQ;
+	% picks the query label
+	qCl = classQ(i,1);
 end
